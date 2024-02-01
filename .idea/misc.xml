@@ -3,7 +3,7 @@
   <component name="Black">
     <option name="sdkName" value="RedditSentimentAnalysis" />
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="RedditSentimentAnalysis" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.9 (RedditSentimentAnalysis)" project-jdk-type="Python SDK" />
   <component name="PyCharmDSProjectLayout">
     <option name="id" value="JupyterRightHiddenStructureLayout" />
   </component>
