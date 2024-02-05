@@ -1,0 +1,11 @@
+pandas>=1.2.3
+numpy
+matplotlib
+seaborn
+scikit-learn
+scipy
+emoji>=1.2.0
+googletrans  # Keep as is if you need specifically the release candidate version
+selenium
+praw
+vaderSentiment

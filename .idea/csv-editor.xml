@@ -10,21 +10,7 @@
             </Attribute>
           </value>
         </entry>
-        <entry key="\reviews_and_ratings.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="\reviews_and_ratings_cleaned.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="\reviews_and_ratings_languages.csv">
+        <entry key="\data\raw\reviews_and_ratings.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
