@@ -5,6 +5,7 @@ import pandas as pd
 import re
 import os
 
+
 class ReviewScraper:
     FIRST_REVIEW_XPATH = "//div[@data-attrid='kc:/local:all reviews']//div[3]/div/div[1]//div[@class='OA1nbd']"
     REVIEW_ELEMENTS_XPATH = "//*[@data-hveid='2']/following-sibling::*//div[@class='OA1nbd']"
@@ -38,31 +39,26 @@ class ReviewScraper:
         self.return_to_first_review()
 
         while True:
-            # Wait for loading indicator to disappear before looking for review elements
             self.short_wait.until(EC.invisibility_of_element_located((By.XPATH, self.LOADING_INDICATOR)))
 
             review_elements = self.driver.find_elements(By.XPATH, self.REVIEW_ELEMENTS_XPATH)
 
             if not review_elements:
-                break  # Break if no reviews are found
+                break
 
-            # Get the text of the last review element
             current_last_review_text = review_elements[-1].text.strip()
 
-            # Check if the last review element is empty or the same as the previous
             if not current_last_review_text or current_last_review_text == self.previous_last_review_text:
                 self.review_with_text_count = len(
-                    [elem for elem in review_elements if elem.text.strip()])  # Store the filtered count
+                    [elem for elem in review_elements if elem.text.strip()])
                 print(self.review_with_text_count, "reviews found.")
                 break
 
-            # Use WebDriver-native method to scroll the last element into view
             self.driver.execute_script("arguments[0].scrollIntoView(true);", review_elements[-1])
 
-            # Wait for loading indicator to disappear again after scrolling
             self.short_wait.until(EC.invisibility_of_element_located((By.XPATH, self.LOADING_INDICATOR)))
 
-            self.previous_last_review_text = current_last_review_text  # Update for next iteration
+            self.previous_last_review_text = current_last_review_text
 
     def click_translate_buttons(self):
         try:
@@ -99,7 +95,6 @@ class ReviewScraper:
         count_non_empty_reviews = 0
         i = 1
 
-        # Make sure to populate or update total_reviews_with_text before this loop
         while count_non_empty_reviews <= self.review_with_text_count:
             try:
                 review_xpath = self.REVIEW_XPATH.format(i=i)
@@ -117,7 +112,6 @@ class ReviewScraper:
                         self.reviews_df.loc[len(self.reviews_df)] = [review_text, rating]
                         count_non_empty_reviews += 1
                 else:
-                    # If a review is empty, we just continue to the next one without breaking the loop
                     pass
 
             except NoSuchElementException:
@@ -126,7 +120,6 @@ class ReviewScraper:
             i += 1
 
     def save_reviews_to_csv(self, filename='reviews_and_ratings.csv'):
-        # Navigate up one directory level from 'notebooks' to the project root
         project_root = os.path.dirname(os.getcwd())
         directory = os.path.join(project_root, 'data', 'raw')
 

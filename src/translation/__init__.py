@@ -1,1 +1,1 @@
-from .review_translator_to_croatian import ReviewTranslatorToCroatian
+from .review_translator import ReviewTranslator

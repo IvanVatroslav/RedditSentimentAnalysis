@@ -9,3 +9,5 @@ googletrans  # Keep as is if you need specifically the release candidate version
 selenium
 praw
 vaderSentiment
+psycopg2-binary
+wordcloud
