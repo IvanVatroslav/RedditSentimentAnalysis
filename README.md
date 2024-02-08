@@ -1,9 +1,11 @@
 # Croatian Reddit Sentiment Analysis
 
-## CURRENTLY IN PROGRESS
+**Status: 🚧 Work in Progress**
 
-### Project Overview
-This project is focused on scraping titles from Croatian subreddits and performing sentiment analysis on them. The goal is to understand the general sentiment (positive, negative, neutral) in the Croatian Reddit community based on the titles of posts.
+Visit the [main notebook](notebooks/main.ipynb) for the latest updates.
 
-### Motivation
-The motivation behind this project is to gauge public opinion and general mood in various Croatian online communities. By analyzing sentiment in subreddit titles, we can get a snapshot of current trends, concerns, and interests among Croatian Redditors.
+## Project Overview
+This project focuses on scraping titles from Croatian subreddits to perform sentiment analysis. The aim is to identify the general sentiment within the Croatian Reddit community, categorized as positive, negative, or neutral, based on post titles.
+
+## Motivation
+The intent of this analysis is to capture the pulse of public opinion and the collective mood across Croatian online forums. Sentiment analysis of subreddit titles provides insights into prevailing trends, topical issues, and user interests within the Croatian Reddit space.
