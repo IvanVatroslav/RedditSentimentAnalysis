@@ -1,11 +1,11 @@
-pandas>=1.2.3
+pandas
 numpy
 matplotlib
 seaborn
 scikit-learn
 scipy
 emoji>=1.2.0
-googletrans  # Keep as is if you need specifically the release candidate version
+googletrans
 selenium
 praw
 vaderSentiment
