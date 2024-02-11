@@ -2,10 +2,13 @@
 
 **Status: 🚧 Work in Progress**
 
-Visit the [main notebook](archive/main.ipynb) for the latest updates.
+For preliminary analysis, see the [presentation notebook](notebooks/presentation.ipynb).
 
 ## Project Overview
-This project focuses on scraping titles from Croatian subreddits to perform sentiment analysis. The aim is to identify the general sentiment within the Croatian Reddit community, categorized as positive, negative, or neutral, based on post titles.
+This project is currently focused on collecting and analyzing restaurant reviews in Croatian. The findings from this exploratory phase will support the development of a sentiment analysis model tailored for Croatian language, which will then be applied to Croatian Reddit titles.
+
+## Data Exploration
+Initial explorations, including visualizations like word clouds from restaurant reviews, can be found in the [presentation notebook](notebooks/presentation.ipynb). This exploration will inform the sentiment analysis techniques to be used for Reddit data.
 
 ## Motivation
-The intent of this analysis is to capture the pulse of public opinion and the collective mood across Croatian online forums. Sentiment analysis of subreddit titles provides insights into prevailing trends, topical issues, and user interests within the Croatian Reddit space.
+The goal is to build a sentiment analysis model that understands the nuances of the Croatian language. By starting with restaurant reviews, we aim to refine our methods before tackling the complexity of Croatian Reddit titles. This step is crucial for ensuring accuracy when the model is applied to the Croatian Reddit community sentiment analysis.

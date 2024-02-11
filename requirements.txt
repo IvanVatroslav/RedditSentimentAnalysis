@@ -4,10 +4,12 @@ matplotlib
 seaborn
 scikit-learn
 scipy
-emoji>=1.2.0
+emoji
 googletrans
 selenium
 praw
 vaderSentiment
 psycopg2-binary
 wordcloud
+nltk
+advertools
