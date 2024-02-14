@@ -1,0 +1,27 @@
+croatian_stopwords = {
+    'i', 'a', 'ili', 'ali', 'pa', 'te', 'da', 'u', 'po', 'na', 's', 'sa', 'za', 'o', 'od', 'do', 'za', 'preko',
+    'pod', 'iz', 'sa', 'na', 'ne', 'da', 'je', 'su', 'mi', 'ti', 'on', 'ona', 'ono', 'mi', 'vi', 'oni', 'one', 'ona',
+    'što', 'koji', 'koja', 'koje', 'ovaj', 'taj', 'koji', 'gdje', 'kada', 'kako', 'sve', 'svi', 'biti', 'bilo',
+    'bili', 'bio', 'biti', 'htjeti', 'moći', 'mogu', 'željeti', 'trebati', 'morati', 'želim', 'može', 'mora',
+    'htio', 'htjela', 'morao', 'morala', 'trebao', 'trebala', 'mogao', 'mogla', 'nisam', 'nisi', 'nije', 'nismo',
+    'niste', 'nisu', 'sam', 'si', 'smo', 'ste', 'su', 'me', 'te', 'mu', 'nam', 'vam', 'ih', 'me', 'mene', 'tebe',
+    'te', 'njega', 'nje', 'nas', 'vas', 'njih', 'moj', 'moja', 'moje', 'tvoj', 'tvoja', 'tvoje', 'njegov', 'njegova',
+    'njegovo', 'naš', 'naša', 'naše', 'vaš', 'vaša', 'vaše', 'svoga', 'svog', 'svom', 'svoj', 'svoja', 'svoje',
+    'svoju', 'zašto', 'zbog', 'kad', 'tako', 'ovako', 'onako', 'ovdje', 'onde', 'gdje', 'dok', 'tokom', 'unatoč',
+    'usprkos', 'zbog', 'radi', 'prema', 'preko', 'između', 'protiv', 'naprotiv', 'za', 'kroz', 'po', 'oko', 'pored',
+    'osim', 'osim', 'uključujući', 'poput', 'kao', 'više', 'manje', 'najviše', 'oko', 'prije', 'poslije', 'sada',
+    'tada', 'ovdje', 'tamo', 'kamo', 'kuda', 'odkud', 'gdje', 'negdje', 'svugdje', 'nikuda', 'bilo', 'kuda', 'nešto',
+    'ništa', 'svatko', 'netko', 'nitko', 'svatko', 'bilo', 'tko', 'svuda', 'negdje', 'nigdje', 'odavde', 'odande',
+    'ovamo', 'onamo', 'odkamo', 'dokle', 'kamo', 'kuda', 'zato', 'čemu', 'što', 'nešto', 'ništa', 'puno', 'malo',
+    'svaki', 'svaka', 'svaki', 'svakog', 'svakom', 'jedan', 'jedna', 'jedno', 'prvi', 'prva', 'prvo', 'jednom',
+    'nekoliko', 'mnogo', 'više', 'manje', 'prethodni', 'sljedeći', 'ko', 'što', 'čiji', 'čija', 'čije', 'čime',
+    'zašto', 'kako', 'koje', 'što', 'tako', 'tada', 'jer', 'ako', 'dok', 'iako', 'premda', 'ukoliko', 'da', 'ne',
+    'no', 'da', 'baš', 'čak', 'samo', 'jedino', 'isključivo', 'također', 'takoder', 'takođe', 'odmah', 'već', 'još',
+    'već', 'još', 'nikad', 'nikada', 'uvijek', 'svuda', 'igdje', 'svugdje', 'nigdje', 'odavde', 'odatle', 'ovamo',
+    'onamo', 'ovdje', 'onde', 'gdje', 'kamo', 'kuda', 'odkud', 'zato', 'zato', 'stoga', 'tako', 'dakle', 'naposljetku',
+    'napokon', 'konačno', 'prije', 'poslije', 'sada', 'sad', 'trenutno', 'odmah', 'uskoro', 'zatim', 'potom', 'onda',
+    'danas', 'sutra', 'jučer', 'prekjučer', 'ove', 'ove', 'prošle', 'sljedeće', 'godine', 'mjeseca', 'tjedna', 'dana',
+    'sati', 'minute', 'restoran', 'restorana', 'restoranu', 'restorane', 'restorani', 'restorana', 'restorane',
+    'restorani', 'hrana'
+}
+

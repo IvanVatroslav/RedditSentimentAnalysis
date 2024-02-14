@@ -1,25 +1,30 @@
-import matplotlib.pyplot as plt
-from wordcloud import WordCloud, STOPWORDS
+from src.utils.stopwords_manager import StopwordsManager
+from wordcloud import WordCloud
 import advertools as adv
-
+import matplotlib.pyplot as plt
 croatian_stopwords = set(adv.stopwords['croatian'])
+stopwords_manager = StopwordsManager(base_stopwords=croatian_stopwords)
 
 
-def generate_wordcloud(df, column_name, additional_stopwords=None, max_words=100, width=800, height=400, save_path=None):
+def generate_wordcloud(df, column_name, additional_stopwords=None, max_words=100, width=800, height=400,
+                       save_path=None):
     if df is None or column_name not in df.columns:
         print(f"DataFrame is None or column '{column_name}' does not exist.")
         return
 
     text = ' '.join(df[column_name].dropna().astype(str)).lower()
 
+    # Update stopwords if needed
     if additional_stopwords:
-        croatian_stopwords.update(additional_stopwords)
+        stopwords_manager.update_stopwords(additional_stopwords)
 
-    clean_text = ' '.join([word for word in text.split() if word not in croatian_stopwords])
+    # Get clean text using the stopwords manager
+    clean_text = stopwords_manager.get_clean_text_for_wordcloud(text)
 
-    wordcloud = WordCloud(stopwords=croatian_stopwords, background_color="white", max_words=max_words, width=width, height=height).generate(clean_text)
+    wordcloud = WordCloud(stopwords=stopwords_manager.base_stopwords, background_color="white", max_words=max_words,
+                          width=width, height=height).generate(clean_text)
 
-    plt.figure(figsize=(width/100, height/100))
+    plt.figure(figsize=(width / 100, height / 100))
     plt.imshow(wordcloud, interpolation='bilinear')
     plt.axis("off")
     if save_path:
@@ -28,9 +33,11 @@ def generate_wordcloud(df, column_name, additional_stopwords=None, max_words=100
 
 
 def generate_wordcloud_all(text, additional_stopwords=None, max_words=100, width=800, height=400):
-    if additional_stopwords is None:
-        additional_stopwords = set()
-    stopwords = set(STOPWORDS).union(additional_stopwords)
+    # Update stopwords if needed
+    if additional_stopwords:
+        stopwords_manager.update_stopwords(additional_stopwords)
+
+    stopwords = stopwords_manager.base_stopwords
 
     interpolations = ['nearest', 'bilinear', 'bicubic', 'lanczos']
 
