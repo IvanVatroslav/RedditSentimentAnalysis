@@ -5,8 +5,8 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 class DriverInit:
-    ACCEPT_COOKIES_XPATH = "//button[contains(., 'Accept all')]"
-    REVIEWS_TAB_XPATH = "//div[contains(@class, 'SVWlSe') and contains(@class, 't35a5d')]//span[text()='Reviews']"
+    ACCEPT_COOKIES_XPATH = "//button[@id='L2AGLb']"
+    REVIEWS_TAB_XPATH = "//span[text()='Reviews']"
 
     def __init__(self):
         self.driver = webdriver.Chrome()

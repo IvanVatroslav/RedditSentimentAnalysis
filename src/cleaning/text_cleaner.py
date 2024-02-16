@@ -3,7 +3,7 @@ import re
 import emoji
 
 
-class ReviewCleaner:
+class TextCleaner:
     @staticmethod
     def clean_review(text, remove_emojis=False):
         pattern = r'Food: \d/\d\s+\|\s+Service: \d/\d\s+\|\s+Atmosphere: \d/\d'
@@ -31,4 +31,19 @@ class ReviewCleaner:
             parts = output_file_path.rsplit('.', 1)
             output_file_path = f"{parts[0]}_no_emojis.{parts[1]}"
         df.to_csv(output_file_path, index=False)
+        return output_file_path
+
+    @staticmethod
+    def clean_title(title):
+        # Define specific cleaning rules for titles
+        title = title.strip()
+        # For example, remove common prefixes like 'Pizzeria'
+        title = re.sub(r'^(Pizzeria|Restaurant)\s+', '', title, flags=re.IGNORECASE)
+        # Further title-specific cleaning logic can be added here
+        return title
+
+    def save_cleaned_titles(self, titles, output_file_path):
+        cleaned_titles = [self.clean_title(title) for title in titles]
+        df_cleaned_titles = pd.DataFrame(cleaned_titles, columns=['Cleaned Title'])
+        df_cleaned_titles.to_csv(output_file_path, index=False)
         return output_file_path

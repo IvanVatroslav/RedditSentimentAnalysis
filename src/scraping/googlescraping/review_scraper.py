@@ -37,7 +37,7 @@ class ReviewScraper:
     def load_reviews(self):
         self.previous_last_review_text = None
         self.return_to_first_review()
-
+        self.wait.until(EC.visibility_of_element_located((By.XPATH, self.FIRST_REVIEW_XPATH)))
         while True:
             self.short_wait.until(EC.invisibility_of_element_located((By.XPATH, self.LOADING_INDICATOR)))
 

@@ -1,1 +1,1 @@
-from .review_cleaner import ReviewCleaner
+from .text_cleaner import TextCleaner
