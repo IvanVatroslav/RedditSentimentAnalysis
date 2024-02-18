@@ -17,10 +17,10 @@
             </Attribute>
           </value>
         </entry>
-        <entry key="\notebooks\data\restaurant_list\Zagreb\restaurant_titles.csv">
+        <entry key="\data\raw\reviews_and_ratings.csv">
           <value>
             <Attribute>
-              <option name="separator" value="|" />
+              <option name="separator" value="," />
             </Attribute>
           </value>
         </entry>
