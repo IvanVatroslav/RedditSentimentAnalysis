@@ -19,7 +19,6 @@ class ReviewScraper:
     REVIEW_XPATH = "//div[@class='OA1nbd']"
     RATING_XPATH = ("//div[@data-attrid='kc:/local:all reviews']//div[3]/div/div[{i}]//div[contains(@aria-label, "
                     "'Rated') and contains(@role, 'img')]")
-    #LOADING_INDICATOR = "//div[string-length(@data-loadingmessage) > 0]"
     LOADING_INDICATOR = "//div[@jscontroller='qAKInc'][string-length(@data-loadingmessage) > 0]"
     REVIEW_BLOCK_XPATH = "//div[contains(@class, 'bwb7ce')]"
 
