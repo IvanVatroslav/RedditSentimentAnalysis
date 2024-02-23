@@ -3,7 +3,42 @@
   <component name="CsvFileAttributes">
     <option name="attributeMap">
       <map>
+        <entry key="\.venv\Lib\site-packages\matplotlib\mpl-data\sample_data\Stocks.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\.venv\Lib\site-packages\matplotlib\mpl-data\sample_data\data_x_x2_x3.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\.venv\Lib\site-packages\matplotlib\mpl-data\sample_data\msft.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\.venv\Lib\site-packages\matplotlib\mpl-data\sample_data\percent_bachelors_degrees_women_usa.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\archive\data\raw\reviews_and_ratings.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\archive\data\reviews_and_ratings.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />

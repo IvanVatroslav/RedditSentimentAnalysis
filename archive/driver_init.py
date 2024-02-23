@@ -19,9 +19,5 @@ class DriverInit:
         accept_cookies = self.wait.until(EC.element_to_be_clickable((By.XPATH, self.ACCEPT_COOKIES_XPATH)))
         accept_cookies.click()
 
-    def navigate_to_reviews_tab(self):
-        reviews_tab = self.wait.until(EC.element_to_be_clickable((By.XPATH, self.REVIEWS_TAB_XPATH)))
-        reviews_tab.click()
-
     def close_browser(self):
         self.driver.quit()

@@ -1,19 +1,26 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-from src.utils.config import BASE_URL
+from selenium.webdriver.support.ui import WebDriverWait
+from webdriver_manager.chrome import ChromeDriverManager
 
 
 class BrowserManager:
-    def __init__(self):
-        self.driver = self._initialize_driver()
+    def __init__(self, wait_time=10, short_wait_time=5):
+        self.driver, self.wait, self.short_wait = self._initialize_driver(wait_time, short_wait_time)
 
-    def _initialize_driver(self):
+    def _initialize_driver(self, wait_time, short_wait_time):
         chrome_options = Options()
-        driver = webdriver.Chrome(options=chrome_options)
-        return driver
+        chrome_options.add_argument("--no-sandbox")
+        chrome_options.add_argument("--disable-dev-shm-usage")
 
-    def navigate_to_url(self, url=BASE_URL):
+        driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=chrome_options)
+        wait = WebDriverWait(driver, wait_time)
+        short_wait = WebDriverWait(driver, short_wait_time)
+        return driver, wait, short_wait
+
+    def navigate_to_url(self, url):
         self.driver.get(url)
+        # Perform additional actions like accepting cookies here
 
     def close_browser(self):
         self.driver.quit()
