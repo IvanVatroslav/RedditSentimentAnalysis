@@ -25,5 +25,3 @@ class GoogleInit:
         return result
 
 
-    def close_browser(self):
-        self.driver.quit()

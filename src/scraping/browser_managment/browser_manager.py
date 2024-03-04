@@ -3,7 +3,6 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from webdriver_manager.chrome import ChromeDriverManager
 
-
 class BrowserManager:
     def __init__(self, wait_time=10, short_wait_time=5):
         self.driver, self.wait, self.short_wait = self._initialize_driver(wait_time, short_wait_time)
@@ -13,7 +12,8 @@ class BrowserManager:
         chrome_options.add_argument("--no-sandbox")
         chrome_options.add_argument("--disable-dev-shm-usage")
 
-        driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=chrome_options)
+        # Update here: Change 'chrome_options=chrome_options' to 'options=chrome_options'
+        driver = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options)
         wait = WebDriverWait(driver, wait_time)
         short_wait = WebDriverWait(driver, short_wait_time)
         return driver, wait, short_wait
