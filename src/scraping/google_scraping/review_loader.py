@@ -3,47 +3,39 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
-
 class ReviewLoader:
-    REVIEW_BLOCK_XPATH = "//div[contains(@class, 'bwb7ce')]"
-    LOADING_INDICATOR = "//div[@jscontroller='qAKInc'][string-length(@data-loadingmessage) > 0]"
-
     def __init__(self, driver):
         self.driver = driver
-        self.wait = WebDriverWait(driver, 10)
-        self.short_wait = WebDriverWait(driver, 5, poll_frequency=0.5)
-        self.previous_total_reviews = 0
-
+        self.wait = WebDriverWait(driver, 30)
+        self.REVIEW_BLOCK_XPATH = "//div[contains(@data-attrid, 'kc:/local:all reviews')]"  # Adjusted XPath for review blocks
+        self.LOADING_INDICATOR_XPATH = "//div[@jscontroller='qAKInc'][string-length(@data-loadingmessage) > 0]"
+        self.total_loaded_reviews = 0  # Initialize total_loaded_reviews attribute
     def load_reviews(self):
-        self.previous_total_reviews = 0
-        # Ensure visibility of initial reviews
-        self.wait.until(EC.visibility_of_element_located((By.XPATH, self.REVIEW_BLOCK_XPATH)))
-        while True:
-            # Wait for any loading indicators to disappear, ensuring the page is ready
-            self.short_wait.until(EC.invisibility_of_element((By.XPATH, self.LOADING_INDICATOR)))
+        empty_review_batches_counter = 0
+        while empty_review_batches_counter < 3:
+            self.wait.until(EC.visibility_of_element_located((By.XPATH, self.REVIEW_BLOCK_XPATH)))
+            self.wait.until(EC.invisibility_of_element_located((By.XPATH, self.LOADING_INDICATOR_XPATH)))
 
-            review_elements = self.driver.find_elements(By.XPATH, self.REVIEW_BLOCK_XPATH)
-            current_total_reviews = len(review_elements)
-
-            if not review_elements or current_total_reviews == self.previous_total_reviews:
-                # If no new reviews are loaded or if the count hasn't changed, exit the loop
+            review_elements = self.driver.find_elements(By.XPATH, self.REVIEW_BLOCK_XPATH + "//div[3]")  # Specific review text container
+            if not review_elements:
+                print("No more reviews to load.")
                 break
 
-            # Scroll to the specific target element to trigger loading more reviews
-            self.driver.execute_script("arguments[0].scrollIntoView(true);", review_elements[-1])
+            scroll_target = review_elements[-1]
+            self.driver.execute_script("arguments[0].scrollIntoView(true);", scroll_target)
 
-            # Use WebDriverWait to explicitly wait for the number of reviews to increase
             try:
-                self.wait.until(
-                    lambda driver: len(
-                        driver.find_elements(By.XPATH, self.REVIEW_BLOCK_XPATH)) > self.previous_total_reviews)
-                # Update current count after waiting
-                current_total_reviews = len(self.driver.find_elements(By.XPATH, self.REVIEW_BLOCK_XPATH))
+                new_reviews_loaded = WebDriverWait(self.driver, 60).until(
+                    lambda driver: len(driver.find_elements(By.XPATH, self.REVIEW_BLOCK_XPATH + "//div[3]")) > len(review_elements))
+                if new_reviews_loaded:
+                    empty_reviews = [elem for elem in review_elements[-3:] if not elem.text.strip()]
+                    if len(empty_reviews) == 3:
+                        empty_review_batches_counter += 1
+                    else:
+                        empty_review_batches_counter = 0
             except TimeoutException:
-                # If no new reviews are loaded within the timeout, assume all reviews are loaded
+                print("Timeout waiting for new reviews to load.")
                 break
 
-            self.previous_total_reviews = current_total_reviews
-            self.short_wait.until(EC.invisibility_of_element((By.XPATH, self.LOADING_INDICATOR)))
-
-        print(f"Final count of reviews loaded: {current_total_reviews}")
+        self.total_reviews_loaded = len(self.driver.find_elements(By.XPATH, self.REVIEW_BLOCK_XPATH + "//div[3]"))
+        print(f"Total reviews loaded: {self.total_reviews_loaded}")

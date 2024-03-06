@@ -45,6 +45,20 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\data\Zagreb\Restaurant_Balon\reviews_and_ratings.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\data\Zagreb\Restoran_Potkova\reviews_and_ratings.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\data\Zagreb\restaurant_list.csv">
           <value>
             <Attribute>

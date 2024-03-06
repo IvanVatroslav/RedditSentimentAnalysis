@@ -13,3 +13,4 @@ psycopg2-binary
 wordcloud
 nltk
 advertools
+webdriver_manager
