@@ -66,13 +66,6 @@
             </Attribute>
           </value>
         </entry>
-        <entry key="\data\raw\reviews_and_ratings.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
       </map>
     </option>
   </component>

@@ -12,10 +12,12 @@ class ReviewInteractionHandler:
                               "contains(@class, 'qGGAec') and .//span[contains(text(), 'Translated by Google')]]")
     MORE_BUTTON_XPATH = "//div[@class='OA1nbd']//a[@role='button' and contains(text(), 'Više')]"
     ACCEPT_COOKIES_XPATH = "//button[@id='L2AGLb']"
-    #RESTAURANT_REVIEWS_REDIRECT_XPATH = '//a[contains(text(), " recenzij")]'
-    #RESTAURANT_REVIEWS_REDIRECT_XPATH = '//div[@data-md="101"]//a'
+    # RESTAURANT_REVIEWS_REDIRECT_XPATH = '//a[contains(text(), " recenzij")]'
+    # RESTAURANT_REVIEWS_REDIRECT_XPATH = '//div[@data-md="101"]//a'
     RESTAURANT_REVIEWS_REDIRECT_XPATH = '//a[contains(text(), " recenzij")] | //div[@data-md="101"]//a'
     RESTAURANT_REVIEWS_LINK_XPATH = '//a[@class="Ky0SRd"]'
+    GO_TO_RESTAURANT_LIST_XPATH = "//span[text()='Više mjesta']"
+    REVIEWS_TAB_XPATH = "//span[text()='Reviews']"
 
     def __init__(self, driver):
         self.driver = driver
@@ -59,12 +61,14 @@ class ReviewInteractionHandler:
         retries = 3  # Number of retries for clicking the element
         for attempt in range(retries):
             try:
-                reviews_redirect = self.wait.until(EC.element_to_be_clickable((By.XPATH, self.RESTAURANT_REVIEWS_REDIRECT_XPATH)))
+                reviews_redirect = self.wait.until(
+                    EC.element_to_be_clickable((By.XPATH, self.RESTAURANT_REVIEWS_REDIRECT_XPATH)))
                 reviews_count_text = reviews_redirect.text.replace('.', '').split()[0]
                 reviews_count = int(reviews_count_text)
                 print(f"Found {reviews_count} reviews.")
                 reviews_redirect.click()
-                reviews_link = self.wait.until(EC.element_to_be_clickable((By.XPATH , self.RESTAURANT_REVIEWS_LINK_XPATH)))
+                reviews_link = self.wait.until(
+                    EC.element_to_be_clickable((By.XPATH, self.RESTAURANT_REVIEWS_LINK_XPATH)))
                 reviews_link.click()
                 break  # Click succeeded; break out of the retry loop
             except (StaleElementReferenceException, NoSuchElementException):
@@ -81,3 +85,9 @@ class ReviewInteractionHandler:
                 print(f"Failed to navigate to reviews: {e}")
                 if attempt == retries - 1:
                     raise  # Raise exception if all retries have failed
+
+    def navigate_to_restaurant_list(self):
+        more_places_button = self.wait.until(EC.element_to_be_clickable((By.XPATH, self.GO_TO_RESTAURANT_LIST_XPATH)))
+        more_places_button.click()
+
+
