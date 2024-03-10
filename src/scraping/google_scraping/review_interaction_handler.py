@@ -12,12 +12,10 @@ class ReviewInteractionHandler:
                               "contains(@class, 'qGGAec') and .//span[contains(text(), 'Translated by Google')]]")
     MORE_BUTTON_XPATH = "//div[@class='OA1nbd']//a[@role='button' and contains(text(), 'Više')]"
     ACCEPT_COOKIES_XPATH = "//button[@id='L2AGLb']"
-    # RESTAURANT_REVIEWS_REDIRECT_XPATH = '//a[contains(text(), " recenzij")]'
-    # RESTAURANT_REVIEWS_REDIRECT_XPATH = '//div[@data-md="101"]//a'
     RESTAURANT_REVIEWS_REDIRECT_XPATH = '//a[contains(text(), " recenzij")] | //div[@data-md="101"]//a'
     RESTAURANT_REVIEWS_LINK_XPATH = '//a[@class="Ky0SRd"]'
-    GO_TO_RESTAURANT_LIST_XPATH = "//span[text()='Više mjesta']"
-    REVIEWS_TAB_XPATH = "//span[text()='Reviews']"
+    GO_TO_RESTAURANT_LIST_XPATH = "//span[text()='Više mjesta' or text()='More places']"
+    REVIEWS_TAB_XPATH = "//span[text()='Reviews' or text()='Review' or text()='Recenzij']"
 
     def __init__(self, driver):
         self.driver = driver

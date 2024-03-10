@@ -14,7 +14,7 @@ from selenium import webdriver
 class RestaurantListScraper:
     def __init__(self, driver):
         self.driver = driver
-        self.MORE_PLACES_XPATH = "//span[text()='Više rezultata']"
+        self.MORE_PLACES_XPATH = "//span[text()='Više rezultata' or text()='More places']"
         self.LOADING_ICON_XPATH = "//div[@data-hveid='CAQQAw']"
         self.TITLE_XPATH = "//span[@class='OSrXXb e62wic']"
 

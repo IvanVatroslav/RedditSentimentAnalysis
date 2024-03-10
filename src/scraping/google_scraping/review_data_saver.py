@@ -1,6 +1,7 @@
 import os
 import pandas as pd
 
+
 class ReviewDataSaver:
     def __init__(self, data_frame, query):
         self.reviews_df = data_frame
