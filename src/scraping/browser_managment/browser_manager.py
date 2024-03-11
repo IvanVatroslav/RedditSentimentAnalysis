@@ -10,11 +10,10 @@ class BrowserManager:
 
     def _initialize_driver(self, wait_time, short_wait_time):
         chrome_options = Options()
-        chrome_options.add_argument("--no-sandbox")
-        chrome_options.add_argument("--disable-dev-shm-usage")
 
+        chrome_options.add_argument("--lang=hr")
         # Update here: Change 'chrome_options=chrome_options' to 'options=chrome_options'
-        driver = webdriver.Chrome()
+        driver = webdriver.Chrome(options=chrome_options)
         driver.maximize_window()
         wait = WebDriverWait(driver, wait_time)
         short_wait = WebDriverWait(driver, short_wait_time)
